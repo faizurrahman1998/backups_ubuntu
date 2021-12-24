@@ -1,0 +1,17 @@
+syntax on
+
+set noerrorbells 
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set smartindent 
+set expandtab
+set nu 
+set rnu
+set nowrap
+set incsearch
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'davidhalter/jedi-vim'
+
+call plug#end()
