@@ -178,12 +178,14 @@ mkcmake()
 {
     shopt -s nullglob
     files=(*)
-    project_name=${PWD##*/};
+    #" PWD##*/" taking the parent folder name
+    project_name=${PWD##*/}; 
 
     echo -e "cmake_minimum_required(VERSION 3.16.2)" >> CMakeLists.txt
     echo -e "\n" >> CMakeLists.txt
     echo -e "project(${project_name})" >> CMakeLists.txt
     echo -e "\n" >> CMakeLists.txt
+    echo -e "set(CMAKE_CXX_STANDARD 17)" >> CMakeLists.txt
     echo -e "add_executable(${project_name} ${files[@]})" >> CMakeLists.txt
     
     mkdir build
@@ -194,8 +196,16 @@ mkcmake()
 runp()
 {
     make -C ./build/
-    echo -e "\nApplication output:\n\n"
+    echo -e "\nApplication output:\n"
 
     file_name=$(find ./build/ -maxdepth 1 -executable -type f); 
     $file_name
+}
+
+crprs()
+{
+    file_name=${PWD##*/}
+
+    cp ./../template.cpp "${file_name}.cpp"
+    createFiles "${file_name}.cpp" "${file_name}.py" v; 
 }
