@@ -206,6 +206,6 @@ crprs()
 {
     file_name=${PWD##*/}
 
-    cp ./../template.cpp "${file_name}.cpp"
+    cp ./../templates/template.cpp "${file_name}.cpp"
     createFiles "${file_name}.cpp" "${file_name}.py" v; 
 }
