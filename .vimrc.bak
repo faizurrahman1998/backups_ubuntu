@@ -13,5 +13,6 @@ set incsearch
 call plug#begin('~/.vim/plugged')
 
 Plug 'davidhalter/jedi-vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
