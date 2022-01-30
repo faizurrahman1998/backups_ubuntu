@@ -116,6 +116,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/fayez/Programs/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/fayez/Programs/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/fayez/Programs/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/fayez/Programs/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
 eval "$(starship init bash)"
 
 echo "                                              Bismillahir Rahmanir Rahim              "
@@ -126,6 +144,8 @@ neofetch
 
 #======================   Personalized Commands   ========================
 
+
+alias jupyter='gnome-terminal -- jupyter "$@"'; 
 
 vimN()
 {
@@ -159,10 +179,10 @@ syncpac()
     sudo apt-get update && sudo apt-get -y upgrade; 
 }
 
-activatev()
+runenv()
 {   
     cd ./env/*_env/;
-    source ./bin/activate; 
+    source ./bin/activate;  
     cd ./../..; 
 }
 
@@ -209,3 +229,5 @@ crprs()
     cp ./../templates/template.cpp "${file_name}.cpp"
     createFiles "${file_name}.cpp" "${file_name}.py" v; 
 }
+
+
