@@ -191,7 +191,7 @@ createEnv()
     mkdirc ./env;
     python3 -m virtualenv "${1}_env";
     cd ./..;  
-    activatev;
+    runenv;
 }
 
 mkcmake()
