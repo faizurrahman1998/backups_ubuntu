@@ -142,7 +142,7 @@ echo ""
 neofetch 
 
 
-#======================   Personalized Commands   ========================
+#======================   fayez-Defined Commands   ========================
 
 
 alias jupyter='gnome-terminal -- jupyter "$@"'; 
@@ -231,3 +231,5 @@ crprs()
 }
 
 
+
+source /home/fayez/.bash_completions/manage.py.sh
