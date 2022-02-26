@@ -188,10 +188,18 @@ runenv()
 
 createEnv()
 {
+    local req=${2:-0}
     mkdirc ./env;
     python3 -m virtualenv "${1}_env";
     cd ./..;  
     runenv;
+
+    if [[ -r "$req" ]]
+    then 
+        echo -e "\n\033[1;32mINSTALLING REQUIREMENTS\n\033[0m"
+        pip3 install --requirement "$req"
+    fi
+
 }
 
 mkcmake()
@@ -216,7 +224,7 @@ mkcmake()
 runp()
 {
     make -C ./build/
-    echo -e "\nApplication output:\n"
+    echo -e "\n\033[1;32mEXECUTING APPLICATION:\n\033[0m"
 
     file_name=$(find ./build/ -maxdepth 1 -executable -type f); 
     $file_name
