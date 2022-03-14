@@ -139,51 +139,51 @@ eval "$(starship init bash)"
 echo "                                              Bismillahir Rahmanir Rahim              "
 echo ""
 echo ""
-neofetch 
+neofetch
 
 
 #======================   fayez-Defined Commands   ========================
 
 
-alias jupyter='gnome-terminal -- jupyter "$@"'; 
+alias jupyter='gnome-terminal -- jupyter "$@"';
 
 vimN()
 {
-    gnome-terminal --profile='Gogh' --title='Editing in VIM' -- vim "$@"; 
+    gnome-terminal --profile='Dracula' --title='Editing in VIM' -- vim "$@";
 }
 
 createFiles()
 # $@ selects all the arguments
 # $# says the total number of arguments passed
-# ${@:start_pos:end_pos} used in this format for slicing 
+# ${@:start_pos:end_pos} used in this format for slicing
 {
-    touch "${@:1:$#-1}"; 
+    touch "${@:1:$#-1}";
 
     if [[ "${@:$#}" == 'c' ]]
     then
-        code "${@:1:$#-1}"; 
+        code "${@:1:$#-1}";
     elif [[ "${@:$#}" == 'v' ]]
-    then 
-        vimN -p "${@:1:$#-1}"; 
+    then
+        vimN -p "${@:1:$#-1}";
     fi
 }
 
 mkdirc()
 {
-    mkdir -p  "$@"; 
-    cd $_; 
+    mkdir -p  "$@";
+    cd $_;
 }
 
 syncpac()
 {
-    sudo apt-get update && sudo apt-get -y upgrade; 
+    sudo apt-get update && sudo apt-get -y upgrade;
 }
 
 runenv()
-{   
+{
     cd ./env/*_env/;
-    source ./bin/activate;  
-    cd ./../..; 
+    source ./bin/activate;
+    cd ./../..;
 }
 
 createEnv()
@@ -191,11 +191,11 @@ createEnv()
     local req=${2:-0}
     mkdirc ./env;
     python3 -m virtualenv "${1}_env";
-    cd ./..;  
+    cd ./..;
     runenv;
 
     if [[ -r "$req" ]]
-    then 
+    then
         echo -e "\n\033[1;32mINSTALLING REQUIREMENTS\n\033[0m"
         pip3 install --requirement "$req"
     fi
@@ -207,7 +207,7 @@ mkcmake()
     shopt -s nullglob
     files=(*)
     #" PWD##*/" taking the parent folder name
-    project_name=${PWD##*/}; 
+    project_name=${PWD##*/};
 
     echo -e "cmake_minimum_required(VERSION 3.16.2)" >> CMakeLists.txt
     echo -e "\n" >> CMakeLists.txt
@@ -215,9 +215,9 @@ mkcmake()
     echo -e "\n" >> CMakeLists.txt
     echo -e "set(CMAKE_CXX_STANDARD 17)" >> CMakeLists.txt
     echo -e "add_executable(${project_name} ${files[@]})" >> CMakeLists.txt
-    
+
     mkdir build
-    
+
     cmake -S ./ -B ./build/
 }
 
@@ -226,7 +226,7 @@ runp()
     make -C ./build/
     echo -e "\n\033[1;32mEXECUTING APPLICATION:\n\033[0m"
 
-    file_name=$(find ./build/ -maxdepth 1 -executable -type f); 
+    file_name=$(find ./build/ -maxdepth 1 -executable -type f);
     $file_name
 }
 
@@ -235,9 +235,6 @@ crprs()
     file_name=${PWD##*/}
 
     cp ./../templates/template.cpp "${file_name}.cpp"
-    createFiles "${file_name}.cpp" "${file_name}.py" v; 
+    createFiles "${file_name}.cpp" "${file_name}.py" v;
 }
 
-
-
-source /home/fayez/.bash_completions/manage.py.sh

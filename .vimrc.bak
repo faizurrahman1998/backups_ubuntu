@@ -1,19 +1,44 @@
 syntax on
 
-set noerrorbells 
+set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-set laststatus=2
-set smartindent 
+set smartindent
 set expandtab
-set nu 
+set nu
 set rnu
 set nowrap
 set incsearch
+set mouse=a
+set encoding=UTF-8
+
+let mapleader="["
+
+
+
+
+
+
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'davidhalter/jedi-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'valloric/youcompleteme'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
+
+colorscheme onedark
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
