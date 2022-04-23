@@ -145,7 +145,7 @@ neofetch
 #======================   fayez-Defined Commands   ========================
 
 
-alias jupyter='gnome-terminal -- jupyter "$@"';
+#alias jupyter='gnome-terminal -- jupyter "$@"';
 
 vimN()
 {
@@ -153,10 +153,11 @@ vimN()
 }
 
 createFiles()
+{
 # $@ selects all the arguments
 # $# says the total number of arguments passed
 # ${@:start_pos:end_pos} used in this format for slicing
-{
+
     touch "${@:1:$#-1}";
 
     if [[ "${@:$#}" == 'c' ]]
