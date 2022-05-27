@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
+eval "$(starship init bash)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -134,7 +134,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-eval "$(starship init bash)"
+
+
+#======================   fayez-Defined Commands   ========================
 
 echo "                                              Bismillahir Rahmanir Rahim              "
 echo ""
@@ -142,12 +144,11 @@ echo ""
 neofetch
 
 
-#======================   fayez-Defined Commands   ========================
 
 
-#alias jupyter='gnome-terminal -- jupyter "$@"';
+alias jupyter='gnome-terminal -- jupyter "$@"';
 
-vimN()
+vimn()
 {
     gnome-terminal --profile='Dracula' --title='Editing in VIM' -- vim "$@";
 }
@@ -165,7 +166,7 @@ createFiles()
         code "${@:1:$#-1}";
     elif [[ "${@:$#}" == 'v' ]]
     then
-        vimN -p "${@:1:$#-1}";
+        vimn -p "${@:1:$#-1}";
     fi
 }
 
@@ -183,7 +184,7 @@ syncpac()
 runenv()
 {
     cd ./env/*_env/;
-    source ./bin/activate;
+    source ./bin/activate; 
     cd ./../..;
 }
 
@@ -203,8 +204,27 @@ createEnv()
 
 }
 
+
+buildp()
+{
+    if [[ -f "./CMakeLists.txt" ]]; 
+    then 
+        mkdir ./build 
+        cmake -S ./ -B ./build/
+    else
+        echo -e "\n\e[1;31mCMakeLists.txt not found.\n";
+    fi
+}
+
+
 mkcmake()
 {
+    if [[ -f "./CMakeLists.txt" ]];
+    then 
+        echo -e "\nCMakeLists.txt exists. Updating..."
+        rm "./CMakeLists.txt"
+    fi
+
     shopt -s nullglob
     files=(*)
     #" PWD##*/" taking the parent folder name
@@ -217,9 +237,8 @@ mkcmake()
     echo -e "set(CMAKE_CXX_STANDARD 17)" >> CMakeLists.txt
     echo -e "add_executable(${project_name} ${files[@]})" >> CMakeLists.txt
 
-    mkdir build
+    echo -e "\n\e[1;32mDONE.\n"
 
-    cmake -S ./ -B ./build/
 }
 
 runp()
@@ -239,3 +258,17 @@ crprs()
     createFiles "${file_name}.cpp" "${file_name}.py" v;
 }
 
+avrmake()
+{
+    IFS="."
+    read -a strarr <<< $1
+
+    avr-gcc -w -Os -DF_CPU=8000000UL -mmcu=atmega32 -c -o "${strarr[0]}".o "${strarr[0]}".c
+    avr-gcc -w -mmcu=atmega32 "${strarr[0]}".o -o "${strarr[0]}"
+    avr-objcopy -O ihex -R .eeprom "${strarr[0]}" "${strarr[0]}".hex
+}
+
+uphex()
+{
+    avrdude -u -c usbasp-clone -p m32 -U flash:w:$1
+}
