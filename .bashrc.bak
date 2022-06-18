@@ -209,13 +209,16 @@ buildp()
 {
     if [[ -d "./build" ]];
     then 
-        echo -e "\n\e[1;32mBUILD EXISTS. REGENERATING...\n"
+        echo -e "\n\e[1;32mBUILD EXISTS. REGENERATING...\n\e[0m"
+        rm -rf ./build;
     fi
 
     if [[ -f "./CMakeLists.txt" ]]; 
     then 
         mkdir ./build 
         cmake -S ./ -B ./build/
+        echo -e "\n\e[1;32mBUILD DONE.\n\e[0m"
+
     else
         echo -e "\n\e[1;31mCMakeLists.txt not found.\n";
     fi
