@@ -207,6 +207,11 @@ createEnv()
 
 buildp()
 {
+    if [[ -d "./build" ]];
+    then 
+        echo -e "\n\e[1;32mBUILD EXISTS. REGENERATING...\n"
+    fi
+
     if [[ -f "./CMakeLists.txt" ]]; 
     then 
         mkdir ./build 
