@@ -181,7 +181,7 @@ syncpac()
     sudo apt-get update && sudo apt-get -y upgrade;
 }
 
-runenv()
+activateenv()
 {
     cd ./env/*_env/;
     source ./bin/activate; 
@@ -194,7 +194,7 @@ createEnv()
     mkdirc ./env;
     python3 -m virtualenv "${1}_env";
     cd ./..;
-    runenv;
+    activateenv;
 
     if [[ -r "$req" ]]
     then
