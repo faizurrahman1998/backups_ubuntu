@@ -6,7 +6,6 @@ set shiftwidth=4
 set smartindent
 set expandtab
 set nu
-set rnu
 set nowrap
 set incsearch
 set mouse=a
