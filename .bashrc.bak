@@ -251,7 +251,6 @@ mkcmake()
 
 runp()
 {
-    make -C ./build/
     echo -e "\n\033[1;32mEXECUTING APPLICATION:\n\033[0m"
 
     file_name=$(find ./build/ -maxdepth 1 -executable -type f);
