@@ -12,6 +12,9 @@ set mouse=a
 set encoding=UTF-8
 set clipboard=unnamedplus
 set laststatus=2
+set cursorline
+hi CursorLine cterm=NONE ctermbg=52 ctermfg=NONE
+
 let mapleader=" "
 
 call plug#begin('~/.vim/plugged')
