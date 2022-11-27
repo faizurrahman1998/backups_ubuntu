@@ -10,38 +10,51 @@ set nowrap
 set incsearch
 set mouse=a
 set encoding=UTF-8
-
-let mapleader="["
-
-
-
-
-
-
+set clipboard=unnamedplus
+set laststatus=2
+let mapleader=" "
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'valloric/youcompleteme'
-Plug 'joshdick/onedark.vim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'itchyny/lightline.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'webdevel/tabulous'
 
 call plug#end()
 
-colorscheme onedark
+colorscheme nightfox
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
-inoremap qq <Esc>
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/youcompleteme/third_party/ycmd/cpp/.ycm_c_c++_conf'
-let g:ycm_confirm_extra_conf = 0
+inoremap qq  <Esc>
+
+" copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+

@@ -150,9 +150,8 @@ alias jupyter='gnome-terminal -- jupyter "$@"';
 
 vimn()
 {
-    gnome-terminal --profile='Dracula' --title='Editing in VIM' -- vim "$@";
+    gnome-terminal -- vim "$@";
 }
-
 createFiles()
 {
 # $@ selects all the arguments
@@ -164,11 +163,14 @@ createFiles()
     if [[ "${@:$#}" == 'c' ]]
     then
         code "${@:1:$#-1}";
+        
     elif [[ "${@:$#}" == 'v' ]]
     then
         vimn -p "${@:1:$#-1}";
+
     fi
 }
+
 
 mkdirc()
 {
@@ -176,10 +178,12 @@ mkdirc()
     cd $_;
 }
 
+
 syncpac()
 {
     sudo apt-get update && sudo apt-get -y upgrade;
 }
+
 
 activateenv()
 {
@@ -188,9 +192,15 @@ activateenv()
     cd ./../..;
 }
 
+
 createEnv()
 {
-    local req=${2:-0}
+
+    # this function takes two positional arguments. 
+    # $1 : environment name, (mandatory)
+    # $2 : requirements file name, (if environment should be created from a requirements file)
+
+    local req=${2:-0} 
     mkdirc ./env;
     python3 -m virtualenv "${1}_env";
     cd ./..;
@@ -205,50 +215,6 @@ createEnv()
 }
 
 
-buildp()
-{
-    if [[ -d "./build" ]];
-    then 
-        echo -e "\n\e[1;32mBUILD EXISTS. REGENERATING...\n\e[0m"
-        rm -rf ./build;
-    fi
-
-    if [[ -f "./CMakeLists.txt" ]]; 
-    then 
-        mkdir ./build 
-        cmake -S ./ -B ./build/
-        echo -e "\n\e[1;32mBUILD DONE.\n\e[0m"
-
-    else
-        echo -e "\n\e[1;31mCMakeLists.txt not found.\n";
-    fi
-}
-
-
-mkcmake()
-{
-    if [[ -f "./CMakeLists.txt" ]];
-    then 
-        echo -e "\nCMakeLists.txt exists. Updating..."
-        rm "./CMakeLists.txt"
-    fi
-
-    shopt -s nullglob
-    files=(*)
-    #" PWD##*/" taking the parent folder name
-    project_name=${PWD##*/};
-
-    echo -e "cmake_minimum_required(VERSION 3.16.2)" >> CMakeLists.txt
-    echo -e "\n" >> CMakeLists.txt
-    echo -e "project(${project_name})" >> CMakeLists.txt
-    echo -e "\n" >> CMakeLists.txt
-    echo -e "set(CMAKE_CXX_STANDARD 17)" >> CMakeLists.txt
-    echo -e "add_executable(${project_name} ${files[@]})" >> CMakeLists.txt
-
-    echo -e "\n\e[1;32mDONE.\n"
-
-}
-
 runp()
 {
     echo -e "\n\033[1;32mEXECUTING APPLICATION:\n\033[0m"
@@ -256,6 +222,7 @@ runp()
     file_name=$(find ./build/ -maxdepth 1 -executable -type f);
     $file_name
 }
+
 
 crprs()
 {
@@ -265,17 +232,3 @@ crprs()
     createFiles "${file_name}.cpp" "${file_name}.py" v;
 }
 
-avrmake()
-{
-    IFS="."
-    read -a strarr <<< $1
-
-    avr-gcc -w -Os -DF_CPU=8000000UL -mmcu=atmega32 -c -o "${strarr[0]}".o "${strarr[0]}".c
-    avr-gcc -w -mmcu=atmega32 "${strarr[0]}".o -o "${strarr[0]}"
-    avr-objcopy -O ihex -R .eeprom "${strarr[0]}" "${strarr[0]}".hex
-}
-
-uphex()
-{
-    avrdude -u -c usbasp-clone -p m32 -U flash:w:$1
-}
