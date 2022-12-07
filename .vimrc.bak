@@ -23,8 +23,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'itchyny/lightline.vim'
-Plug 'davidhalter/jedi-vim'
 Plug 'webdevel/tabulous'
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -60,4 +60,9 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+let g:lightline = {
+  \ 'colorscheme': 'wombat',
+  \ }
+
 
