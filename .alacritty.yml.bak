@@ -584,7 +584,7 @@ schemes:
 # *SolarizedDark
 # *TomorrowNight
 
-colors: *TomorrowNight
+colors: *OceanicNext
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
