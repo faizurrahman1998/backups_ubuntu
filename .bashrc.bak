@@ -138,7 +138,7 @@ unset __conda_setup
 
 #======================   fayez-Defined Commands   ========================
 
-echo "                                              Bismillahir Rahmanir Rahim              "
+echo "                                                  Bismillahir Rahmanir Rahim              "
 echo ""
 echo ""
 neofetch
@@ -147,6 +147,8 @@ neofetch
 
 
 alias jupyter='gnome-terminal -- jupyter "$@"';
+alias ping='ping -c 5'
+
 
 vimn()
 {
