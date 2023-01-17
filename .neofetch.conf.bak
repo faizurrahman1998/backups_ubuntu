@@ -526,7 +526,7 @@ mpc_args=()
 # Example:
 # colors=(distro)      - Text is colored based on Distro colors.
 # colors=(4 6 1 8 8 6) - Text is colored in the order above.
-colors=(4 6 1 4 8 6)
+colors=(distro)
 
 
 # Text Options
@@ -760,7 +760,7 @@ image_source="auto"
 #       Slackware, SunOS, LinuxLite, OpenSUSE, Raspbian,
 #       postmarketOS, and Void have a smaller logo variant.
 #       Use '{distro name}_small' to use the small variants.
-ascii_distro="Ubuntu"
+ascii_distro="auto"
 
 # Ascii Colors
 #

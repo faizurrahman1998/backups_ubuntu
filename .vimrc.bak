@@ -65,4 +65,4 @@ let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ }
 
-
+nnoremap <CR> :noh<CR><CR>
