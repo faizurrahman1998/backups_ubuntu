@@ -42,11 +42,12 @@ neofetch
 alias jupyter='gnome-terminal -- jupyter "$@"';
 alias ping='ping -c 5'
 alias tree='tree -L 2'
-alias vim='gvim -v'
+alias lsdir='find ./ -maxdepth 1 -type d'
+alias vim='vimx'
 
 vimn()
 {
-   alacritty -e gvim -v "$@" & 
+   alacritty -e vimx "$@" & 
 }
 
 createFiles()
