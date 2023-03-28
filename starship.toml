@@ -1,6 +1,6 @@
-
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = "[▶](bold #2ECC71)"
+error_symbol = "[▶](bold #E74C3C)"
 
 #[line_break]
 #disabled = true
