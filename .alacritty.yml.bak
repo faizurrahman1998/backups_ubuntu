@@ -1,6 +1,6 @@
 window: 
   dimensions:
-    columns: 90 
-    lines: 35
+    columns: 100
+    lines: 40 
 
   opacity: 0.80
