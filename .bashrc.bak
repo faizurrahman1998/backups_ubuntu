@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --width 1'
+    alias ls='ls --color=auto -1'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -116,11 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 eval "$(starship init bash)"
 
 #======================   fayez-Defined Commands   ========================
 
-echo "                                  Bismillahir Rahmanir Rahim              "
+echo "                                      Bismillahir Rahmanir Rahim              "
 echo ""
 echo ""
 neofetch
@@ -226,9 +227,10 @@ cpclip()
 
 runlab()
 {
-    gnome-terminal -q -- jupyter lab --browser=firefox &
+    gnome-terminal -- jupyter lab --browser=firefox &
 }
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 . "$HOME/.cargo/env"

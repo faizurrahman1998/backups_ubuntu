@@ -1,3 +1,5 @@
+format = '$all'
+
 [character]
 success_symbol = "[▶](bold #2ECC71)"
 error_symbol = "[▶](bold #E74C3C)"
@@ -28,3 +30,15 @@ truncation_symbol = ".../"
 
 [git_status]
 disabled = true
+
+[username]
+format = "[$user@]($style)"
+style_user = "bold purple"
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$hostname:]($style) "
+trim_at = "-"
+style = "bold yellow"
+
