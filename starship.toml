@@ -33,7 +33,7 @@ disabled = true
 
 [username]
 format = "[$user@]($style)"
-style_user = "bold purple"
+style_user = "bold #58D68D"
 show_always = true
 
 [hostname]

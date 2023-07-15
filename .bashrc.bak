@@ -121,18 +121,21 @@ eval "$(starship init bash)"
 
 #======================   fayez-Defined Commands   ========================
 
-echo "                                      Bismillahir Rahmanir Rahim              "
-echo ""
-echo ""
-neofetch
+#echo "                                      Bismillahir Rahmanir Rahim              "
+#echo ""
+#echo ""
+#neofetch
 
-
-
+echo "
+                     ▒█░▒█ █▀▀ █░░ █░░ █▀▀█ 　 ▒█░░▒█ █▀▀█ █▀▀█ █░░ █▀▀▄ 
+                     ▒█▀▀█ █▀▀ █░░ █░░ █░░█ 　 ▒█▒█▒█ █░░█ █▄▄▀ █░░ █░░█ 
+                     ▒█░▒█ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ 　 ▒█▄▀▄█ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀▀▀░
+"
 
 #alias jupyter='gnome-terminal -- jupyter "$@"';
 alias ping='ping -c 5'
 alias tree='tree -L 2'
-alias lsdir='find ./ -maxdepth 1 -type d'
+alias lsdir='tree -d -L 2'
 
 
 vimn()
@@ -234,3 +237,4 @@ runlab()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 . "$HOME/.cargo/env"
+RANGER_LOAD_DEFAULT_RC=false

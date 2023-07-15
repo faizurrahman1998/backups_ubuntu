@@ -15,4 +15,7 @@ cp /home/fayez/.config/alacritty/alacritty.yml /home/fayez/Public/Backups/.alacr
 echo "neofetch config"
 cp /home/fayez/.config/neofetch/config.conf /home/fayez/Public/Backups/.neofetch.conf.bak
 
+echo "ranger files"
+cp -r /home/fayez/.config/ranger/ /home/fayez/Public/Backups/ranger.bak/
+
 echo "completed"

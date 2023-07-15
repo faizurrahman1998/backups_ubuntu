@@ -1,9 +1,9 @@
 import:
-  - ~/.config/alacritty/themes/themes/one_dark.yaml
+  - ~/.config/alacritty/themes/themes/dracula.yaml
 
 window: 
   dimensions:
-    columns: 100
+    columns: 90
     lines: 40 
 
-  opacity: 0.80
+  opacity: 0.70

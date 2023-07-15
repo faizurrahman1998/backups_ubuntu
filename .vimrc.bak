@@ -28,6 +28,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'webdevel/tabulous'
 Plug 'davidhalter/jedi-vim'
 Plug 'rip-rip/clang_complete'
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/lh-brackets'
 
 call plug#end()
 
@@ -52,10 +54,10 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
+nnoremap <S-H> <C-W>h
+nnoremap <S-J> <C-W>j
+nnoremap <S-K> <C-W>k
+nnoremap <S-L> <C-W>l
 
 inoremap qq  <Esc>
 
@@ -70,3 +72,15 @@ let g:lightline = {
   \ }
 
 nnoremap <CR> :noh<CR><CR>
+
+
+"inoremap { {}<Esc>ha
+"inoremap ( ()<Esc>ha
+"inoremap [ []<Esc>ha
+"inoremap " ""<Esc>ha
+"inoremap ' ''<Esc>ha
+"inoremap ` ``<Esc>ha
+
+"inoremap {<CR> {<CR>}<Esc>ko
+"inoremap [<CR> [<CR>]<Esc>ko
+"inoremap (<CR> (<CR>)<Esc>ko
