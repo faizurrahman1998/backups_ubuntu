@@ -1,0 +1,19 @@
+echo "executing this file"
+echo $@
+
+for item in $@
+do
+    linker_entry=$(grep -Fn 'clean' Makefile | tr -cd '[:digit:]')
+    linker_recipe="$item:\n\tclang++ \$(src_dir)/${item%.*}.cpp -o \$(build_dir)/$item\n"
+    sed -i "$linker_entry i $linker_recipe" ./Makefile
+    echo "Added target $item"
+    echo "Please add the linker option for $item."
+done
+
+echo "Open Makefile in vim? (Y/n)"
+read choice
+
+if [[ $choice != 'n' ]]
+then
+    alacritty -qq --config-file ~/.config/alacritty/vim_config.yml -T "Adding linker option for $item" -e vim "Makefile" & 
+fi
