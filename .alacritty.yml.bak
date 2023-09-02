@@ -1,9 +1,14 @@
 import:
-  - ~/.config/alacritty/themes/themes/dracula.yaml
+  - ~/.config/alacritty/themes/themes/material_theme.yaml
 
 window: 
   dimensions:
-    columns: 90
-    lines: 40 
+    columns: 95
+    lines: 30
 
-  opacity: 0.70
+  opacity: 0.74
+
+font:
+  normal:
+    family: SpaceMono Nerd Font Mono
+    style: Regular

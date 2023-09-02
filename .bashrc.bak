@@ -120,6 +120,15 @@ fi
 eval "$(starship init bash)"
 
 #======================   fayez-Defined Commands   ========================
+Color_Reset='\033[0m'       # Text Reset
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
 
 #echo "                                      Bismillahir Rahmanir Rahim              "
 #echo ""
@@ -231,6 +240,57 @@ cpclip()
 runlab()
 {
     gnome-terminal -- jupyter lab --browser=firefox &
+}
+
+createProject()
+{
+    if [ -z $1 ]
+    then
+        echo -e "${Red}PROJECT NOT CREATED.${Color_Reset}"
+        echo "[REQUIRED]: Project Name."
+        return
+    fi
+
+    mkdir -p "$1"/{build,src/include/}
+    cd "$1"
+    createFiles main.cpp Makefile 0
+
+    echo -e \
+"""
+#!/bin/bash
+build_dir = ./build
+src_dir = ./src
+include_dir = ./src/include
+srcs = \$(shell find ./src/ -type f -name '*.cpp' -printf '%f')
+objs = \$(srcs:.cpp=.o)
+
+all: \$(build_dir) \$(objs) main.o ${1}
+
+${1}: \$(build_dir) main.o
+\tclang++ -I\$(include_dir) \\
+\t        \$(build_dir)/main.o \\
+\t        -o \$(build_dir)/${1}
+
+main.o:
+\tclang++ -I\$(include_dir) -c main.cpp -o \$(build_dir)/main.o
+
+\$(build_dir):
+\tmkdir ./build
+
+update_self:
+\t./script.bash \$(objs)
+
+clean: 
+\trm \$(build_dir)/*.o
+""" >> Makefile
+
+    cp ~/Templates/mainfile.temp ./main.cpp
+    cp ~/Public/Backups/script.bash.bak ./script.bash
+    chmod 754 ./script.bash
+    echo "-I./src/include/" >> .clang_complete
+
+    echo -e "${Green}[CREATED PROJECT] $1.${Color_Reset}"
+    
 }
 
 
