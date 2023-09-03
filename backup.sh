@@ -16,6 +16,8 @@ echo "neofetch config"
 cp /home/fayez/.config/neofetch/config.conf /home/fayez/Public/Backups/.neofetch.conf.bak
 
 echo "ranger files"
-cp -r /home/fayez/.config/ranger/ /home/fayez/Public/Backups/ranger.bak/
+cp -r /home/fayez/.config/ranger/ /home/fayez/Public/Backups/ranger_bak/
+zip -r ./ranger_bak.zip ./ranger_bak
+rm -rf ranger_bak
 
 echo "completed"
