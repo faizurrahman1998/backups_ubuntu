@@ -3,7 +3,7 @@
 for item in $@
 do
     linker_entry=$(grep -Fn 'clean' Makefile | tr -cd '[:digit:]')
-    linker_recipe="$item:\n\tclang++ -I\$(include_dir) -c \$(src_dir)/${item%.*}.cpp -o \$(build_dir)/$item\n"
+    linker_recipe="$item:\n\t\$(compiler) -I\$(include_dir) -c \$(src_dir)/${item%.*}.cpp -o \$(build_dir)/$item\n"
     sed -i "$linker_entry i $linker_recipe" ./Makefile
     echo "Added target $item"
     echo "Please add the linker option for $item."
