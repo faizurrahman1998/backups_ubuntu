@@ -118,6 +118,7 @@ fi
 
 
 #======================   fayez-Defined Commands   ========================
+
 Color_Reset='\033[0m'       # Text Reset
 Black='\033[0;30m'        # Black
 Red='\033[0;31m'          # Red
@@ -260,7 +261,7 @@ compiler=g++
 build_dir = ./build
 src_dir = ./src
 include_dir = ./src/include
-srcs = \$(shell find ./src/ -type f -name '*.cpp' -printf '%f')
+srcs = \$(shell find ./src/ -type f -name '*.cpp' -printf '%f ')
 objs = \$(srcs:.cpp=.o)
 
 all: \$(build_dir) \$(objs) main.o ${1}
@@ -294,5 +295,5 @@ clean:
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+eval "$(starship init bash)"
 RANGER_LOAD_DEFAULT_RC=false

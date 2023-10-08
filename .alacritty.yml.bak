@@ -1,14 +1,7 @@
 import:
-  - ~/.config/alacritty/themes/themes/material_theme.yaml
+ - ~/.config/alacritty/themes/themes/palenight.yaml
 
 window: 
-  dimensions:
-    columns: 95
-    lines: 30
-
   opacity: 0.74
 
-font:
-  normal:
-    family: SpaceMono Nerd Font Mono
-    style: Regular
+
