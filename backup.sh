@@ -20,4 +20,9 @@ cp -r /home/fayez/.config/ranger/ /home/fayez/Public/Backups/ranger_bak/
 zip -r ./ranger_bak.zip ./ranger_bak
 rm -rf ranger_bak
 
+echo "neovim config"
+cp -r /home/fayez/.config/nvim/ /home/fayez/Public/backups/nvim_bak/
+zip -r ./nvim_bak.zip ./nvim_bak
+rm -rf nvim_bak
+
 echo "completed"
