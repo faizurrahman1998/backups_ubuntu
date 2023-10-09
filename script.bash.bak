@@ -25,3 +25,5 @@ if [[ $choice != 'n' ]]
 then
     alacritty -qq --config-file ~/.config/alacritty/vim_config.yml -T "Adding linker option for $item" -e vim "Makefile" & 
 fi
+
+bear -- make

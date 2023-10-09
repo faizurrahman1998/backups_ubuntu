@@ -148,7 +148,7 @@ alias lsdir='tree -d -L 2'
 
 vimn()
 {
-   alacritty -qq --config-file ~/.config/alacritty/vim_config.yml -T "vim - $@" -e vim "$@" & 
+   alacritty -qq --config-file ~/.config/alacritty/vim_config.yml -T "nvim - $@" -e nvim "$@" & 
 }
 
 createFiles()
