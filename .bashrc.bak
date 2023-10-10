@@ -266,6 +266,9 @@ objs = \$(srcs:.cpp=.o)
 
 all: \$(build_dir) \$(objs) main.o ${1}
 
+debug: compiler += -g 
+debug: \$(build_dir) \$(objs) main.o ${1}
+
 ${1}: \$(build_dir) main.o
 \t\$(compiler) -I\$(include_dir) \\
 \t        \$(build_dir)/main.o \\
@@ -287,7 +290,7 @@ clean:
     cp ~/Templates/mainfile.temp ./main.cpp
     cp ~/Public/Backups/script.bash.bak ./script.bash
     chmod 754 ./script.bash
-    echo "-I./src/include/" >> .clang_complete
+    clang-format --style WebKit --dump-config > .clang-format
 
     echo -e "${Green}[CREATED PROJECT] $1.${Color_Reset}"
     
