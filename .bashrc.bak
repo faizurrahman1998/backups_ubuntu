@@ -257,39 +257,34 @@ createProject()
     echo -e \
 """
 #!/bin/bash
-compiler=g++
+CXX=g++
+CPPFLAGS=-I\$(include_dir)
 build_dir = ./build
 src_dir = ./src
-include_dir = ./src/include
-srcs = \$(shell find ./src/ -type f -name '*.cpp' -printf '%f ')
+include_dir = \$(src_dir)/include
+srcs = \$(shell find ./ -type f -name '*.cpp' )
 objs = \$(srcs:.cpp=.o)
 
-all: \$(build_dir) \$(objs) main.o ${1}
+all: \$(build_dir) \$(build_dir)/${1}
 
-debug: compiler += -g 
-debug: \$(build_dir) \$(objs) main.o ${1}
+debug: CXX += -g 
+debug: \$(build_dir) \$(build_dir)/${1}
 
-${1}: \$(build_dir) main.o
-\t\$(compiler) -I\$(include_dir) \\
-\t        \$(build_dir)/main.o \\
+\$(build_dir)/${1}: \$(build_dir) \$(objs)
+\t\$(CXX) -I\$(include_dir) \\
+\t        \$(objs) \\
 \t        -o \$(build_dir)/${1}
-
-main.o:
-\t\$(compiler) -I\$(include_dir) -c main.cpp -o \$(build_dir)/main.o
 
 \$(build_dir):
 \tmkdir ./build
 
-update_self:
-\t./script.bash \$(objs)
-
 clean: 
-\trm \$(build_dir)/*.o
+\trm ./*.o
+\trm \$(src_dir)/*.o
+\trm \$(build_dir)/*
 """ >> Makefile
 
     cp ~/Templates/mainfile.temp ./main.cpp
-    cp ~/Public/Backups/script.bash.bak ./script.bash
-    chmod 754 ./script.bash
     clang-format --style WebKit --dump-config > .clang-format
 
     echo -e "${Green}[CREATED PROJECT] $1.${Color_Reset}"
