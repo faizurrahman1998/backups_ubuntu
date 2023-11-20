@@ -271,7 +271,7 @@ debug: CXX += -g
 debug: \$(build_dir) \$(build_dir)/${1}
 
 \$(build_dir)/${1}: \$(build_dir) \$(objs)
-\t\$(CXX) -I\$(include_dir) \\
+\t\$(CXX) \$(CPPFLAGS) \\
 \t        \$(objs) \\
 \t        -o \$(build_dir)/${1}
 
@@ -289,6 +289,12 @@ clean:
 
     echo -e "${Green}[CREATED PROJECT] $1.${Color_Reset}"
     
+}
+
+source_ros()
+{
+    source /opt/ros/humble/setup.bash
+    ROS_DOMAIN_ID=0
 }
 
 
