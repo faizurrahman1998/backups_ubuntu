@@ -3,6 +3,9 @@ echo "backing up>>"
 echo ".bashrc"
 cp /home/fayez/.bashrc /home/fayez/Public/Backups/.bashrc.bak
 
+echo ".tmux.conf"
+cp /home/fayez/.tmux.conf /home/fayez/Public/Backups/.tmux.conf.bak
+
 echo ".vimrc"
 cp /home/fayez/.vimrc /home/fayez/Public/Backups/.vimrc.bak
 
