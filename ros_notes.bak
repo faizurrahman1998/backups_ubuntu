@@ -79,7 +79,19 @@ Actions:
 Creating ROS 2 workspace with `colcon`
 -------------------------------------
 
+Project Structure:
+
+my_awesome_ros_project/
+-- build/
+-- install/
+-- log/
+-- src/
+---- new_package/
+-------- <package files>
+
+
 "colcon" to build package.
+colcon build // this command should be run on the project directory, not in the sub-directories
 
 creating a workspace
     - Sourcing an overlay in the same terminal where you built, or likewise building 
