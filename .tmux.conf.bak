@@ -1,3 +1,6 @@
+
+set -g default-terminal "screen-256color"
+set -g base-index 1
 # use C-f for the prefix
 set-option -g prefix C-f
 
@@ -17,5 +20,9 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
 
-#synchronize panes
+# synchronize panes
 bind-key y set-window-option synchronize-panes\; display-message "synchronize mode toggled."
+
+set -g status-fg colour154
+set -g status-bg colour236
+

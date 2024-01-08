@@ -293,6 +293,17 @@ source_ros()
     ROS_DOMAIN_ID=0
 }
 
+tmuxn()
+{
+    if [ -z $1 ]
+    then 
+        folder_name=${PWD##*/}
+        tmux new -s "$folder_name"
+        return 
+    fi
+
+    tmux new -s "$1"
+}
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 eval "$(starship init bash)"
