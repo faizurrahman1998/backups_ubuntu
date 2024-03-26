@@ -23,6 +23,13 @@ bind-key l select-pane -R
 # synchronize panes
 bind-key y set-window-option synchronize-panes\; display-message "synchronize mode toggled."
 
-set -g status-fg colour154
-set -g status-bg colour236
+set -g status-fg colour227
+set -g status-bg colour235
+
+set-window-option -g window-status-current-style "bg=colour220,fg=colour232"
+
+set -g status-left-length 40
+
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+run '~/.tmux/plugins/tpm/tpm'
 
